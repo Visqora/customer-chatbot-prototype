@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Northstar Apparel - Costing Proposal</title>
+  <style>
+    :root {
+      --ink: #17362d;
+      --ink-soft: #49615a;
+      --paper: #f8f6ef;
+      --white: #ffffff;
+      --line: #d9ddd5;
+      --coral: #e36f55;
+      --gold: #c59b42;
+      --mist: #e7efea;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #d9ddd9;
+      color: var(--ink);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.48;
+    }
+
+    body { counter-reset: page; }
+
+    .page {
+      position: relative;
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto 10mm;
+      padding: 18mm 18mm 17mm;
+      background: var(--paper);
+      page-break-after: always;
+      overflow: hidden;
+    }
+
+    .page:last-child { page-break-after: auto; }
+
+    .page-number {
+      position: absolute;
+      right: 18mm;
+      bottom: 8mm;
+      color: var(--ink-soft);
+      font-size: 8.5pt;
+    }
+
+    .page-number::after {
+      counter-increment: page;
+      content: counter(page);
+    }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--coral);
+      font-size: 8.5pt;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
+    h1 { margin-bottom: 10px; font-size: 31pt; line-height: 1.04; }
+    h2 { margin-bottom: 12px; font-size: 21pt; line-height: 1.15; }
+    h3 { margin-bottom: 6px; font-size: 11pt; }
+    p { margin-bottom: 10px; }
+    strong { font-weight: 700; }
+
+    .muted { color: var(--ink-soft); }
+    .small { font-size: 8.7pt; }
+
+    .rule {
+      width: 42mm;
+      height: 4px;
+      margin: 12px 0 22px;
+      background: var(--coral);
+    }
+
+    .cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background:
+        linear-gradient(135deg, rgba(23,54,45,0.97), rgba(23,54,45,0.91)),
+        var(--ink);
+      color: var(--white);
+    }
+
+    .cover .eyebrow { color: #ffb49f; }
+    .cover .muted { color: #c7d2cd; }
+    .cover h1 { max-width: 145mm; font-size: 39pt; }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 15pt;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.6);
+      color: #ffb49f;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 11pt;
+      font-weight: 700;
+    }
+
+    .cover-total {
+      margin-top: 22mm;
+      padding: 14px 0;
+      border-top: 1px solid rgba(255,255,255,0.28);
+      border-bottom: 1px solid rgba(255,255,255,0.28);
+    }
+
+    .cover-total span { display: block; color: #c7d2cd; font-size: 9pt; }
+    .cover-total strong { display: block; font-family: Georgia, serif; font-size: 28pt; font-weight: 500; }
+
+    .cover-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 20px;
+      font-size: 9.5pt;
+    }
+
+    .cover-meta span { display: block; color: #aebdb7; font-size: 8pt; text-transform: uppercase; }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head h2 { margin-bottom: 0; }
+
+    .summary-grid, .scenario-grid, .terms-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .panel {
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.62);
+    }
+
+    .panel.accent { border-top: 4px solid var(--coral); }
+    .panel.recommended { border: 2px solid var(--ink); background: var(--white); }
+
+    .metric {
+      margin: 2px 0 4px;
+      font-family: Georgia, serif;
+      font-size: 21pt;
+      line-height: 1.1;
+    }
+
+    .scope-list, .plain-list {
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .scope-list li, .plain-list li {
+      position: relative;
+      margin: 0 0 7px;
+      padding-left: 16px;
+    }
+
+    .scope-list li::before {
+      position: absolute;
+      left: 0;
+      content: "✓";
+      color: var(--coral);
+      font-weight: 700;
+    }
+
+    .plain-list li::before {
+      position: absolute;
+      left: 2px;
+      content: "•";
+      color: var(--gold);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.3pt;
+    }
+
+    th, td {
+      padding: 8px 7px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--ink-soft);
+      font-size: 8pt;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    td.amount, th.amount { width: 31mm; text-align: right; white-space: nowrap; }
+    tr.total td { border-top: 2px solid var(--ink); border-bottom: 0; font-weight: 700; }
+    tr.discount td { color: var(--coral); }
+
+    .callout {
+      margin: 14px 0;
+      padding: 12px 14px;
+      border-left: 4px solid var(--coral);
+      background: var(--mist);
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 3px 7px;
+      border: 1px solid var(--ink);
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .price-line {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 10px 0 12px;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .price-line strong { font-family: Georgia, serif; font-size: 18pt; font-weight: 500; }
+    .price-line span { color: var(--ink-soft); font-size: 8.5pt; text-align: right; }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      margin: 16px 0;
+      border-top: 2px solid var(--ink);
+    }
+
+    .timeline div { padding: 10px 8px 0 0; }
+    .timeline strong { display: block; font-size: 9pt; }
+    .timeline span { color: var(--ink-soft); font-size: 8pt; }
+
+    .signature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22mm;
+      margin-top: 20mm;
+    }
+
+    .signature-line {
+      padding-top: 7px;
+      border-top: 1px solid var(--ink);
+      font-size: 8.5pt;
+    }
+
+    .source-list {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .source-list li { margin-bottom: 12px; }
+    .source-list a { color: var(--ink); word-break: break-all; }
+
+    @page { size: A4; margin: 0; }
+
+    @media print {
+      html, body { background: var(--white); }
+      .page { margin: 0; width: 210mm; height: 297mm; min-height: 297mm; }
+    }
+  </style>
+</head>
+<body>
+  <section class="page cover">
+    <div>
+      <div class="brand"><span class="brand-mark">V</span> Visqora</div>
+      <div style="margin-top: 55mm">
+        <p class="eyebrow">Commercial proposal · Client copy</p>
+        <h1>Northstar Apparel digital storefront &amp; AI support</h1>
+        <div class="rule"></div>
+        <p class="muted" style="max-width: 130mm; font-size: 12pt;">Consolidated costing for design, implementation, Botpress configuration, production deployment, testing, documentation, training, and support.</p>
+        <div class="cover-total">
+          <span>Budget-fit MVP · total professional fee cap</span>
+          <strong>₹6,500</strong>
+        </div>
+      </div>
+    </div>
+    <div class="cover-meta">
+      <div><span>Prepared for</span>Northstar Apparel</div>
+      <div><span>Prepared by</span>Visqora</div>
+      <div><span>Proposal reference</span>VIS-NOA-2026-1030</div>
+      <div><span>Issue date</span>30 October 2026</div>
+      <div><span>Quote validity</span>15 calendar days</div>
+      <div><span>Delivery target</span>5 business days after inputs</div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="section-head">
+      <div><p class="eyebrow">01 · Executive summary</p><h2>What the client receives</h2></div>
+      <p class="muted small">One bot · one storefront · one production domain</p>
+    </div>
+    <p>This budget-fit proposal delivers a focused MVP: one adapted static clothing storefront, one embedded Botpress support assistant, a compact approved knowledge base, essential safety testing, deployment, and handover. The scope is intentionally limited to remain within the client’s ₹5,000–₹7,000 budget.</p>
+
+    <div class="summary-grid" style="margin: 16px 0;">
+      <div class="panel accent">
+        <p class="eyebrow">One-time fee</p>
+        <p class="metric">₹6,500</p>
+        <p class="muted small">Total professional-fee cap, inclusive of supplier tax if applicable.</p>
+      </div>
+      <div class="panel accent">
+        <p class="eyebrow">Budget pilot recurring</p>
+        <p class="metric">₹0/mo</p>
+        <p class="muted small">Botpress Free on the client’s existing commercial hosting; provider limits apply.</p>
+      </div>
+      <div class="panel">
+        <p class="eyebrow">Delivery</p>
+        <p class="metric">5 business days</p>
+        <p class="muted small">Starts after approved content, brand inputs, and access are available.</p>
+      </div>
+      <div class="panel">
+        <p class="eyebrow">Included assurance</p>
+        <p class="metric">7 days</p>
+        <p class="muted small">Post-launch correction of reproducible defects within accepted scope.</p>
+      </div>
+    </div>
+
+    <h3>Included deliverables</h3>
+    <div class="summary-grid">
+      <ul class="scope-list">
+        <li>Responsive Northstar clothing storefront</li>
+        <li>Search and persistent shopping bag</li>
+        <li>Botpress Webchat installation</li>
+        <li>One support bot in a client-owned workspace</li>
+        <li>Up to 5 approved sources</li>
+      </ul>
+      <ul class="scope-list">
+        <li>Up to 15 acceptance questions</li>
+        <li>Desktop and mobile production checks</li>
+        <li>One consolidated revision round</li>
+        <li>Quick-start guide and 30-minute handover</li>
+        <li>Seven-day post-launch defect period</li>
+      </ul>
+    </div>
+
+    <div class="callout">
+      <strong>Ownership and budget boundary:</strong> provider accounts, billing, content, configuration, and business data remain client-controlled. The ₹6,500 cap covers Visqora’s professional services only; optional Vercel Pro, Botpress upgrades, domains, and usage overages are paid directly by the client.
+    </div>
+    <div class="page-number">Page </div>
+  </section>
+
+  <section class="page">
+    <div class="section-head">
+      <div><p class="eyebrow">02 · One-time implementation</p><h2>Professional service breakdown</h2></div>
+      <p class="muted small">Fixed scope · INR</p>
+    </div>
+
+    <table aria-label="One-time implementation costs">
+      <thead><tr><th>Work package</th><th>Included output</th><th class="amount">Amount</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Discovery &amp; solution planning</strong></td><td>Confirm MVP scope, ownership, support route, acceptance criteria, and release plan.</td><td class="amount">₹500</td></tr>
+        <tr><td><strong>Knowledge preparation</strong></td><td>Review and organize up to 5 approved documents or pages supplied by the client.</td><td class="amount">₹750</td></tr>
+        <tr><td><strong>Bot configuration &amp; safety</strong></td><td>Grounded answers, scope control, fallback, data-safety rules, and catalogue pricing.</td><td class="amount">₹1,500</td></tr>
+        <tr><td><strong>Static storefront adaptation</strong></td><td>Adapt the existing one-page clothing storefront with supplied branding, products, sizing, and policies.</td><td class="amount">₹1,500</td></tr>
+        <tr><td><strong>Webchat integration</strong></td><td>Botpress embed, standard branding, loading behavior, and production connection.</td><td class="amount">₹750</td></tr>
+        <tr><td><strong>QA &amp; acceptance testing</strong></td><td>Up to 15 questions, essential safety checks, responsive checks, and production smoke tests.</td><td class="amount">₹500</td></tr>
+        <tr><td><strong>Production deployment</strong></td><td>One deployment, public URL verification, and documented rollback step.</td><td class="amount">₹400</td></tr>
+        <tr><td><strong>Documentation &amp; handover</strong></td><td>Quick-start guide and one 30-minute owner handover.</td><td class="amount">₹350</td></tr>
+        <tr><td><strong>Launch warranty</strong></td><td>Seven calendar days of covered post-launch defect correction.</td><td class="amount">₹250</td></tr>
+        <tr class="total"><td colspan="2">Fixed professional service fee</td><td class="amount">₹6,500</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>Budget cap:</strong> the client’s professional-service payment will not exceed ₹6,500. If supplier GST is legally applicable, it is included within this cap rather than added above it. Third-party provider invoices remain separate.
+    </div>
+
+    <p class="small muted">This is introductory MVP pricing built around the existing static storefront pattern and standard managed-platform controls. Custom backend work, original product photography, copywriting, advanced integrations, and ongoing maintenance are not included.</p>
+    <div class="page-number">Page </div>
+  </section>
+
+  <section class="page">
+    <div class="section-head">
+      <div><p class="eyebrow">03 · Recurring provider costs</p><h2>Budget launch and upgrade paths</h2></div>
+      <p class="muted small">Provider prices researched 30 Oct 2026</p>
+    </div>
+
+    <div class="scenario-grid">
+      <div class="panel">
+        <span class="tag">Within budget</span>
+        <h3>Botpress Free + existing client host</h3>
+        <div class="price-line"><strong>₹0/mo</strong><span>No new provider subscription<br>within stated assumptions</span></div>
+        <ul class="plain-list">
+          <li>Botpress Free: $0, 100 conversations/month.</li>
+          <li>No Botpress top-ups or overages on Free.</li>
+          <li>Widget is installed on the client’s existing commercial website or hosting.</li>
+          <li>Suitable for a controlled low-volume launch.</li>
+          <li>Botpress branding remains; capacity is limited.</li>
+        </ul>
+      </div>
+
+      <div class="panel recommended">
+        <span class="tag">If separate hosting is required</span>
+        <h3>Botpress Free + Vercel Pro</h3>
+        <div class="price-line"><strong>≈ ₹1,905/mo</strong><span>$20/month<br>before tax/overages</span></div>
+        <ul class="plain-list">
+          <li>Botpress Free remains at 100 conversations/month.</li>
+          <li>Vercel Pro: $20/month and $20 monthly usage credit.</li>
+          <li>One deploying seat included.</li>
+          <li>Use when the client does not have suitable commercial hosting.</li>
+          <li>Paid directly by the client; not part of the ₹6,500 fee.</li>
+        </ul>
+      </div>
+    </div>
+
+    <table style="margin-top: 18px" aria-label="Recurring annual cost comparison">
+      <thead><tr><th>Scenario</th><th>USD basis</th><th class="amount">INR estimate</th></tr></thead>
+      <tbody>
+        <tr><td>Budget launch on existing commercial host</td><td>Botpress Free</td><td class="amount">₹0/year</td></tr>
+        <tr><td>Separate Vercel commercial hosting</td><td>Vercel Pro $240/year</td><td class="amount">₹22,865/year</td></tr>
+        <tr><td>Optional future scale-up</td><td>Botpress Plus $1,800/year + Vercel $240/year</td><td class="amount">₹1,94,351/year</td></tr>
+        <tr><td>Botpress conversation pack</td><td>$65 per additional 100 conversations</td><td class="amount">≈ ₹6,193/pack</td></tr>
+        <tr><td>Botpress AI credit grant</td><td>$10 automatic grant at provider threshold</td><td class="amount">≈ ₹953/grant</td></tr>
+        <tr><td>Additional Vercel deploying seat</td><td>$20/seat/month</td><td class="amount">≈ ₹1,905/mo</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>Hosting boundary:</strong> Vercel’s official Hobby documentation restricts Hobby to non-commercial, personal use. A commercial launch must use the client’s existing eligible commercial host or a paid plan such as Vercel Pro.
+    </div>
+
+    <p class="small muted">Conversion uses $1 = ₹95.27, Frankfurter reference rate dated 29 October 2026. Actual card charges depend on the provider’s invoice currency, exchange rate, bank fees, taxes, usage, and future pricing changes.</p>
+    <div class="page-number">Page </div>
+  </section>
+
+  <section class="page">
+    <div class="section-head">
+      <div><p class="eyebrow">04 · Optional services</p><h2>Costs outside the fixed scope</h2></div>
+      <p class="muted small">Only charged after written approval</p>
+    </div>
+
+    <table aria-label="Optional service costs">
+      <thead><tr><th>Optional item</th><th>Pricing basis</th><th class="amount">Guide price</th></tr></thead>
+      <tbody>
+        <tr><td>Ongoing care plan</td><td>Monthly usage review, unresolved-question review, one knowledge update, and up to 3 support hours.</td><td class="amount">₹5,000/mo</td></tr>
+        <tr><td>Ad-hoc support</td><td>Configuration, troubleshooting, content maintenance, or deployment assistance.</td><td class="amount">₹1,500/hr</td></tr>
+        <tr><td>Additional revision round</td><td>One consolidated feedback list within the existing architecture and content model.</td><td class="amount">₹2,500</td></tr>
+        <tr><td>Additional knowledge sources</td><td>Review and upload beyond the included 20 sources.</td><td class="amount">₹300/source</td></tr>
+        <tr><td>Additional acceptance tests</td><td>Design, execution, and recording beyond the included 50 questions.</td><td class="amount">₹150/test</td></tr>
+        <tr><td>Additional website or brand</td><td>Second deployment using the established solution pattern; content supplied by client.</td><td class="amount">From ₹7,500</td></tr>
+        <tr><td>Additional language</td><td>Localized bot instructions, reviewed content, UI copy, and language-specific testing.</td><td class="amount">From ₹8,000</td></tr>
+        <tr><td>Order/helpdesk/API integration</td><td>Discovery, authentication, API work, error handling, privacy review, and tests.</td><td class="amount">From ₹15,000</td></tr>
+        <tr><td>Custom domain</td><td>Registration, renewal, transfer, and DNS charges vary by domain and registrar.</td><td class="amount">At cost</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 22px">Not included unless separately approved</h3>
+    <div class="summary-grid">
+      <ul class="plain-list">
+        <li>Order tracking or account access</li>
+        <li>Payment, refund, or cancellation actions</li>
+        <li>CRM and helpdesk synchronization</li>
+        <li>WhatsApp, voice, or social channels</li>
+      </ul>
+      <ul class="plain-list">
+        <li>Legal review or policy authoring</li>
+        <li>Custom analytics dashboards</li>
+        <li>Product catalogue ingestion at scale</li>
+        <li>24/7 monitoring or uptime SLA</li>
+      </ul>
+    </div>
+
+    <div class="callout"><strong>No surprise charges:</strong> optional work starts only after the client approves a written change description, fixed estimate or rate, and delivery impact.</div>
+    <div class="page-number">Page </div>
+  </section>
+
+  <section class="page">
+    <div class="section-head">
+      <div><p class="eyebrow">05 · Commercial terms</p><h2>Payments, schedule &amp; acceptance</h2></div>
+      <p class="muted small">Proposal VIS-NOA-2026-1030</p>
+    </div>
+
+    <table aria-label="Milestone payment schedule">
+      <thead><tr><th>Milestone</th><th>Evidence</th><th>Share</th><th class="amount">Payment</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Kickoff</strong></td><td>MVP scope, supplied inputs, access, and provider-account ownership confirmed.</td><td>50%</td><td class="amount">₹3,250</td></tr>
+        <tr><td><strong>Launch &amp; handover</strong></td><td>Production checks, quick-start guide, handover, ownership, and release evidence complete.</td><td>50%</td><td class="amount">₹3,250</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 22px">Indicative delivery sequence</h3>
+    <div class="timeline">
+      <div><strong>Day 1</strong><span>Kickoff &amp; access</span></div>
+      <div><strong>Day 1–2</strong><span>Knowledge setup</span></div>
+      <div><strong>Day 2–3</strong><span>Build &amp; configure</span></div>
+      <div><strong>Day 3–4</strong><span>Test &amp; revise</span></div>
+      <div><strong>Day 5</strong><span>Launch &amp; handover</span></div>
+    </div>
+
+    <div class="terms-grid">
+      <div class="panel">
+        <h3>Client supplies</h3>
+        <ul class="plain-list">
+          <li>Approved policies and product information</li>
+          <li>Brand assets and final customer-facing copy</li>
+          <li>Client-owned Botpress and Vercel accounts</li>
+          <li>Website/domain access and one approver</li>
+          <li>Timely consolidated feedback</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Acceptance standard</h3>
+        <ul class="plain-list">
+          <li>100% of critical tests pass</li>
+          <li>At least 90% overall applicable tests pass</li>
+          <li>No contradiction of approved policy</li>
+          <li>Correct fallback for unsupported questions</li>
+          <li>No critical desktop or mobile regression</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout"><strong>Schedule dependency:</strong> the five-business-day target begins when required content, access, and approvals are available. Client review delays move later dates by the same duration.</div>
+    <div class="page-number">Page </div>
+  </section>
+
+  <section class="page">
+    <div class="section-head">
+      <div><p class="eyebrow">06 · Assumptions &amp; safeguards</p><h2>Cost controls and responsibilities</h2></div>
+      <p class="muted small">Transparent by design</p>
+    </div>
+
+    <div class="terms-grid">
+      <div>
+        <h3>Pricing assumptions</h3>
+        <ul class="plain-list">
+          <li>One English-language bot and one commercial website.</li>
+          <li>Up to 5 readable sources and 15 acceptance questions.</li>
+          <li>One standard Botpress webchat embed with no custom backend.</li>
+          <li>One consolidated revision round before launch.</li>
+          <li>Client content is final, accurate, and legally approved.</li>
+          <li>Provider subscriptions and usage are client-paid.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Usage controls</h3>
+        <ul class="plain-list">
+          <li>Client reviews Botpress conversation and AI usage.</li>
+          <li>Botpress paid plans can automatically add conversation packs.</li>
+          <li>Vercel Pro can bill usage beyond included credit.</li>
+          <li>Enable provider alerts and spend-management controls.</li>
+          <li>No paid add-on is enabled by Visqora without approval.</li>
+          <li>Provider price changes pass through at actual cost.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Important Botpress billing behavior:</strong> the official pricing FAQ states that paid accounts receive warnings as usage rises and can automatically purchase 100-conversation packs near the quota. AI credit grants may also auto-recharge at the provider threshold. The client should monitor billing and right-size the plan.
+    </div>
+
+    <h3>Warranty versus new scope</h3>
+    <p>A covered defect is reproducible behavior that fails an accepted requirement using the same approved content, configuration, website environment, and platform capabilities. New features, changed policies, provider outages, client changes, new integrations, or usage-limit exhaustion are not warranty defects.</p>
+
+    <h3>Validity and provider variability</h3>
+    <p>This professional-service quote is valid for 15 calendar days. Third-party prices are research snapshots, not fixed resale prices. Botpress, Vercel, domain registrars, tax authorities, banks, and currency markets may change the final recurring charge.</p>
+
+    <h3>Approval</h3>
+    <p>Approval confirms the fixed scope, assumptions, exclusions, milestone payments, client-owned provider billing, and change-control process described in this proposal.</p>
+
+    <div class="signature-grid">
+      <div class="signature-line">For Northstar Apparel · Name, signature, date</div>
+      <div class="signature-line">For Visqora · Name, signature, date</div>
+    </div>
+    <div class="page-number">Page </div>
+  </section>
+
+  <section class="page">
+    <div class="section-head">
+      <div><p class="eyebrow">07 · Research record</p><h2>Pricing sources &amp; calculation notes</h2></div>
+      <p class="muted small">Accessed 30 October 2026</p>
+    </div>
+
+    <ol class="source-list">
+      <li><strong>Botpress pricing.</strong> Free and Plus plan prices, included conversations, AI usage, white-label availability, storage, overage packs, and billing behavior.<br><a href="https://botpress.com/pricing">https://botpress.com/pricing</a></li>
+      <li><strong>Vercel pricing.</strong> Hobby, Pro, included network usage, team seats, overages, add-ons, and tax caveat.<br><a href="https://vercel.com/pricing">https://vercel.com/pricing</a></li>
+      <li><strong>Vercel Hobby plan.</strong> Official restriction to non-commercial, personal use and included usage limits.<br><a href="https://vercel.com/docs/plans/hobby">https://vercel.com/docs/plans/hobby</a></li>
+      <li><strong>Vercel Pro plan.</strong> $20 monthly platform fee, one deploying seat, $20 usage credit, additional seats, and on-demand billing.<br><a href="https://vercel.com/docs/plans/pro-plan">https://vercel.com/docs/plans/pro-plan</a></li>
+      <li><strong>Frankfurter exchange-rate API.</strong> Reference rate of $1 = ₹95.27 dated 29 October 2026.<br><a href="https://api.frankfurter.dev/v1/latest?from=USD&amp;to=INR">https://api.frankfurter.dev/v1/latest?from=USD&amp;to=INR</a></li>
+    </ol>
+
+    <h3 style="margin-top: 22px">Calculation basis</h3>
+    <table aria-label="Cost calculation basis">
+      <thead><tr><th>Calculation</th><th>Formula</th><th class="amount">Result</th></tr></thead>
+      <tbody>
+        <tr><td>Vercel Pro monthly</td><td>$20 × ₹95.27</td><td class="amount">₹1,905.40</td></tr>
+        <tr><td>Botpress Plus monthly equivalent</td><td>$150 × ₹95.27</td><td class="amount">₹14,290.50</td></tr>
+        <tr><td>Recommended monthly equivalent</td><td>$170 × ₹95.27</td><td class="amount">₹16,195.90</td></tr>
+        <tr><td>Recommended annual providers</td><td>$2,040 × ₹95.27</td><td class="amount">₹1,94,350.80</td></tr>
+        <tr><td>Botpress 100-conversation pack</td><td>$65 × ₹95.27</td><td class="amount">₹6,192.55</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout"><strong>Decision recommendation:</strong> start with Botpress Free on the client’s existing commercial website to stay inside budget. Upgrade Botpress only when usage approaches 100 conversations per month; use Vercel Pro only if separate commercial hosting is required.</div>
+
+    <p class="small muted">This proposal is a commercial estimate, not tax, accounting, or legal advice. Provider terms and invoices control third-party billing. Amounts are rounded for client readability.</p>
+    <div class="page-number">Page </div>
+  </section>
+</body>
+</html>
