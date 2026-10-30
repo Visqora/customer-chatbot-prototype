@@ -32,6 +32,8 @@ The chatbot will:
 
 The [Northstar Apparel demo package](demo/README.md) contains a fictional storefront, Botpress-ready knowledge, strict bot instructions, acceptance tests, and a client demonstration script. It uses synthetic business content and no customer data.
 
+The [live Northstar Apparel storefront](https://storefront-tawny-phi.vercel.app/) is deployed from `demo/storefront`. The Vercel project is connected to this repository and deploys changes from `main`.
+
 ## Proposed delivery summary
 
 - **Delivery target:** 5 business days after all approved inputs and access are received.
